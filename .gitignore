@@ -6,4 +6,5 @@ venv/
 .DS_Store
 data/raw/*
 database/*.db 
-make_project.py 
+make_project.py
+requirements.txt
