@@ -1,5 +1,5 @@
 import threading
-s
+
 class Node:
     def __init__(self, key=None, value=None):
         self.key = key 

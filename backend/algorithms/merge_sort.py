@@ -1,4 +1,5 @@
-def merge_sort(items,key, reverse =false):
+
+def merge_sort(items, key, reverse=false):
     if len(items) <= 1:
         return list(items)
     middle = len(items) // 2
@@ -10,7 +11,8 @@ def merge(left, right, key, reverse):
     i = 0
     j =0
     while i < len(left) and j < len(right):
-        if goes_first(key(left[i]), key(right[j]), reverse)
+
+        if goes_first(key(left[i]), key(right[j]), reverse):
             result.append(left[i])
         i += 1
     else:
