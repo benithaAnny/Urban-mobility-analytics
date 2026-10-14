@@ -1,14 +1,14 @@
 import pytest
 from backend.app import create_app
 from database.insert import build_database
+from database.db import connect
 from pipeline.clean import clean_trips
-from pipeline.clean import clean_trips
-from pipeline.feature import add_features
+from pipeline.features import add_features
 
 @pytest.fixture
 def client(tmp_path, raw_trips, zones):
     clean, _, log = clean_trips(raw_trips, set(zones["location_id"]))
-    trips = add_feature(clean, zones)
+    trips = add_features(clean, zones)
     db_path = tmp_path / "test.db"
     conn = connect(db_path)
     build_database(conn, zones, {}, trips, log.to_frame())
@@ -29,13 +29,13 @@ def test_hour_filter(client):
     assert all(row["hour"] ==8 for row in rows)
 
 def test_top_zones_are_ranked(client):
-    rows = client.get("/api/zonez/top?metric=trips&k=2&min_trips=0").json
-    speeds = [row["avg_speed"] for row in rows]
-    assert speeds == sorted(speeds)
+    rows = client.get("/api/zones/top?metric=trips&k=2&min_trips=0").json
+    trips = [row["trips"] for row in rows]
+    assert trips == sorted(trips, reverse=True)
 
 def test_routes_have_names(client):
-    route = client.get("/api/routes/top?l=3").json[0]
-    assert route["pickup_zone"] and rout["dropoff_zone"]
+    route = client.get("/api/routes/top?k=3").json[0]
+    assert route["pickup_zone"] and route["dropoff_zone"]
  
 def test_trip_list_and_detail(client):
     page = client.get("/api/trips?sort=total_amount&order=desc&page_size=5").json
@@ -52,6 +52,6 @@ def test_bad_input_is_rejected(client):
 
 def test_data_quality_log(client):
     reasons = [row["reason"] for row in client.get("/api/data-quality").json]
-    assert" duplicate" in reasons
+    assert "duplicate" in reasons
     assert "impossible_speed" in reasons
     assert "rows_kept" in reasons

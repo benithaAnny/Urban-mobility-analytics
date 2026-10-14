@@ -59,7 +59,7 @@ function showZoneFilter() {
             ' <button type="button" id="clear-zone" aria-label="Clear zone">&times;</button></span>';
         document.getElementById("clear-zone").addEventListener("click", () => {
             form.elements.pu_zone.value = "";
-            efresh();
+            refresh();
     });
 }
 
@@ -167,7 +167,3 @@ async function start() {
 }
 
 start();
-
-        
-
-        

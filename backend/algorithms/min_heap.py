@@ -1,9 +1,10 @@
-class Minheap:
-    def __init__(self, key =None):
-        self.key = key
+class MinHeap:
+    def __init__(self, key=None):
+        self.key = key if key is not None else (lambda item: item)
+        self.items = []
 
     def __len__(self):
-        return len(self.itmes)
+        return len(self.items)
     def peek(self):
         if len (self.items) == 0:
             raise IndexError("head is empty")
@@ -35,16 +36,16 @@ class Minheap:
     def move_up(self,i):
         while i >0:
             parent = (i -1) //2
-            if not self.smakker(i, parent):
+            if not self.smaller(i, parent):
                 break
             self.swap(i,parent)
             i = parent
 
     def move_down(self, i):
         size = len(self.items)
-        while  true:
+        while True:
             left = 2 * i + 1
-            right = 2 * i + 1
+            right = 2 * i + 2
             smallest = i
             if left <size and self.smaller(left, smallest):
                 smallest = left
@@ -55,21 +56,22 @@ class Minheap:
                 break
             self.swap(i, smallest)
             i = smallest 
-    def top_k(items, k, key):
-        if k <= 0:
-            return []
-        heap = Minheap(key)
-        for item in items:
-            if len(heap) < k:
-                heap.push(item)
-            elif key(item) > key(heap.peek()):
-                heap.replace_top(item)
 
-        smallest_first = []
-        while len(heap) >0:
-            smallest_first.append(heap.pop())
+def top_k(items, k, key):
+    if k <= 0:
+        return []
+    heap = MinHeap(key)
+    for item in items:
+        if len(heap) < k:
+            heap.push(item)
+        elif key(item) > key(heap.peek()):
+            heap.replace_top(item)
 
-        biggest_first = []
-        for i in range(len(smallest_first) -1, -1, -1):
-            biggest_first.append(smallest_first[i])
-        return biggest_first
+    smallest_first = []
+    while len(heap) >0:
+        smallest_first.append(heap.pop())
+
+    biggest_first = []
+    for i in range(len(smallest_first) -1, -1, -1):
+        biggest_first.append(smallest_first[i])
+    return biggest_first

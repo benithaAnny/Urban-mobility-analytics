@@ -15,7 +15,7 @@ class LRUCache:
         self.back = Node()
         self.front.next = self.back
         self.back.prev = self.front
-        self.lock = threading.lock()
+        self.lock = threading.Lock()
 
     def __len__(self):
         return len(self.nodes)
@@ -48,8 +48,7 @@ class LRUCache:
         node.next.prev = node.prev
 
     def add_to_front(self,node):
-        node.prevv= self.front
+        node.prev = self.front
         node.next = self.front.next
         self.front.next.prev = node
         self.front.next = node
-            

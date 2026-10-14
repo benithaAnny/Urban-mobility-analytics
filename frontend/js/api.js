@@ -1,4 +1,3 @@
-
 export function toQuery(params) {
     const query = new URLSearchParams();
     for (const key in params) {
@@ -8,7 +7,7 @@ export function toQuery(params) {
         }
     }
     const text = query.toString();
-    return text ? " "?" + text : "";
+    return text ? "?" + text : "";
 }
 
 export async function get(path, params = {}) {
@@ -20,8 +19,7 @@ export async function get(path, params = {}) {
         body = {};
     }
     if (!response.ok) {
-        throw new Error(body.error || "Request failed (" + response.status + "0");
+        throw new Error(body.error || "Request failed (" + response.status + ")");
     }
     return body;
 }
-        

@@ -26,7 +26,7 @@ export function initMap(geojson, clickHandler) {
     }).addTo(map);
 
     zoneLayer = L.geoJSON(geojson, {
-        style: zonestyle,
+        style: zoneStyle,
         onEachFeature: (feature, shape) => {
             shape.bindTooltip(tooltipText(feature), {sticky: true});
             shape.on("mouseover", () => shape.setStyle({weight: 2, color: "#ffffff" }));
@@ -107,5 +107,3 @@ function drawLegend() {
     }
     legend.innerHTML = html;
 }
-
-            

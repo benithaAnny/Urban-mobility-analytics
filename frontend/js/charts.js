@@ -60,7 +60,7 @@ export function drawDistance(rows) {
 
 export function drawPayment(rows) {
   let totalTrips = 0;
-    for (const row of rows) totalTrips ++ row.trips;
+    for (const row of rows) totalTrips += row.trips;
     if (totalTrips === 0) totalTrips = 1;
 
     draw("payment-chart", {
@@ -88,18 +88,3 @@ export function drawDaily(rows) {
         options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } },
     });
 }
-
-
-
-
-
-    
-
-
-        
-        
-
-
-     
-
-

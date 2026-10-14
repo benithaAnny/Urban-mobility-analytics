@@ -139,6 +139,7 @@ async function showTrip(id) {
         document.getElementById("modal-body").innerHTML =
             "<h2>Trip #" + trip.trip_id + "</h2>" +
             "<p>" + escapeHtml(trip.pickup_zone) + " (" + escapeHtml(trip.pickup_borough) + ") &rarr; " +
+            escapeHtml(trip.dropoff_zone) + " (" + escapeHtml(trip.dropoff_borough) + ")</p>" +
             warning + '<div class="detail-grid">' + grid + "</div>";
         document.getElementById("trip-modal").hidden = false;
     } catch (error) {
@@ -149,4 +150,3 @@ async function showTrip(id) {
 function closeTrip() {
     document.getElementById("trip-modal").hidden = true;
 }
-        
