@@ -33,9 +33,12 @@ In plain words:
 A browser can't read a database directly, so the API sits in the middle.
 
 ## 3. The data
-We use the January 2019 yellow-taxi file. Three files from the TLC go in `data/raw/`.
-**They are not in the repository** (too big), so download them from the course assignment page
-(Dataset section: Fact Table, Dimension Table, Spatial Metadata) and save them with these exact names:
+We use the January 2019 yellow-taxi file. Three files go in `data/raw/`.
+
+**Raw data file needed:** `yellow_tripdata.parquet` is too large for GitHub, so it is **not in the repository**. We shared a download link instead:
+[Download yellow_tripdata.parquet](https://alueducation.instructure.com/courses/3138/files/581082?wrap=1)
+
+Download it and save it in `data/raw/` with that exact name before running the program. The other two files (the zone lookup and the zone shapes) come from the course assignment page (Dataset section: Dimension Table, Spatial Metadata). Save all three with these exact names:
 
 | File | What it is |
 |---|---|
@@ -45,9 +48,9 @@ We use the January 2019 yellow-taxi file. Three files from the TLC go in `data/r
 
 **If a file comes in another format**
 - *Trips as a CSV:* convert it to parquet (change the CSV name to match yours):
-  ```bash
+```bash
   python -c "import pandas as pd; pd.read_csv('data/raw/yellow_tripdata_2019-01.csv').to_parquet('data/raw/yellow_tripdata.parquet')"
-  ```
+```
 - *Zones as a shapefile zip:* the app needs GeoJSON. Open https://mapshaper.org, drag the zip in,
   click Export, choose GeoJSON, and save the result as `data/raw/taxi_zones.geojson`.
   (The coordinates may be in feet; the pipeline converts them automatically.)
