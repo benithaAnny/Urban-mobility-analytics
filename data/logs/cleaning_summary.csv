@@ -1,0 +1,23 @@
+reason,record_count,action,description
+rows_loaded,1000000,info,Rows read from the trip parquet file
+duplicate,0,excluded,Exact copy of an earlier row
+missing_critical,0,excluded,"Missing or unreadable time, location, distance or fare"
+out_of_period,72,excluded,Pickup outside the file's month (2019-01): device clock errors
+non_positive_duration,813,excluded,Drop-off at or before pickup
+too_short,8851,excluded,Under 1 minute: meter tests or cancelled trips
+too_long,2654,excluded,Over 300 minutes: meter left running
+zero_distance,1498,excluded,Zero or negative distance
+distance_outlier,6,excluded,Over 100 miles: GPS or odometer error
+impossible_speed,74,excluded,Average speed over 80 mph is impossible in NYC
+negative_amount,569,excluded,"Negative fare or total: refunds, not real trips"
+fare_outlier,0,excluded,"Fare over $1,000: typing error"
+unknown_location,0,excluded,Pickup or drop-off zone ID not in the zone lookup
+passenger_count_imputed,15077,imputed,"Missing, 0 or more than 6 passengers set to 1 and flagged"
+rate_code_unknown,0,imputed,Missing or unknown rate code set to 99 (Unknown)
+payment_type_unknown,0,imputed,Missing or unknown payment type set to 5 (Unknown)
+vendor_missing,0,imputed,Missing vendor stored as 0 (Unknown vendor)
+surcharge_missing,623575,imputed,Missing surcharges set to $0 (charge not applied)
+total_mismatch,2096,flagged,"Bill items don't add up to the total (kept, flagged)"
+tip_exceeds_fare,609,flagged,"Tip bigger than the fare (kept, flagged)"
+rows_excluded,14537,info,Total rows removed
+rows_kept,985463,info,Rows written to the database

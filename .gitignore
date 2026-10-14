@@ -7,3 +7,5 @@ venv/
 database/*.db 
 make_project.py
 
+data/raw/yellow_tripdata.parquet
+.vscode/
