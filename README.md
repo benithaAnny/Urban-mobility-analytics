@@ -7,7 +7,7 @@ happen, how fast traffic runs, and what a ride costs.
 ## Project links
 - Video walkthrough: [Video](https://youtu.be/sngJV6skmLs)
 - Scrum board: [Scrum board](https://trello.com/b/ZRPcVyd2/urban-mobility-analytics)
-- Technical report: [docs/REPORT.pdf](docs/REPORT.pdf)
+- Technical report: [docs/REPORT.pdf](https://drive.google.com/file/d/1wrcRVYRsOVvIBdOyPegPkPyJkFrP4Bb8/view?usp=sharing)
 ---
 
 ## 1. The problem
