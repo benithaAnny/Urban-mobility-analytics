@@ -36,7 +36,8 @@ A browser can't read a database directly, so the API sits in the middle.
 We use the January 2019 yellow-taxi file. Three files go in `data/raw/`.
 
 **Raw data file needed:** `yellow_tripdata.parquet` is too large for GitHub, so it is **not in the repository**. We shared a download link instead:
-[Download yellow_tripdata.parquet](https://alueducation.instructure.com/courses/3138/files/581082?wrap=1)
+[Download yellow_tripdata.parquet](https://drive.google.com/file/d/1oAkdP_gE8k-sRF2Hxb-3qcE-1T1wCcoA/view?usp=sharing)
+The parquet file was derived from the original csv file [yellow_tripdata-2019.csv](https://alueducation.instructure.com/courses/3138/files/581082?wrap=1)
 
 Download it and save it in `data/raw/` with that exact name before running the program. The other two files (the zone lookup and the zone shapes) come from the course assignment page (Dataset section: Dimension Table, Spatial Metadata). Save all three with these exact names:
 
