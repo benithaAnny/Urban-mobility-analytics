@@ -5,8 +5,8 @@ them in a relational database, and lets you explore how the city moves: when and
 happen, how fast traffic runs, and what a ride costs.
 
 ## Project links
-- Video walkthrough: <ADD LINK>
-- Scrum board: <ADD LINK>
+- Video walkthrough: [Video](https://youtu.be/sngJV6skmLs)
+- Scrum board: [Scrum board](https://trello.com/b/ZRPcVyd2/urban-mobility-analytics)
 - Technical report: [docs/REPORT.pdf](docs/REPORT.pdf)
 ---
 
